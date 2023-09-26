@@ -1,0 +1,25 @@
+version: "3.11"
+
+services:
+  redis:
+    image: redis:latest
+    expose:
+      - "6379"
+    command: [ "redis-server" ]
+    volumes:
+      - ./redis-data:/data
+      - ./redis-conf:/etc/redis
+    restart: always
+    networks:
+      - metar
+  metar:
+    build: .
+    ports:
+      - "8009:8000"
+    volumes:
+      - ./:/metar
+    restart: always
+    networks:
+      - metar
+networks:
+  metar:
