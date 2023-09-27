@@ -7,13 +7,12 @@ from nws.env import CACHE_TIMEOUT_SECONDS, NWS_ROOT_URL
 
 def get_metar_data(request) -> MetarJsonResponse:
     station = request.GET.get("scode")
+    no_cache = request.GET.get("no-cache")
     if not station:
         metar_data = "Something awesome coming in"  # TODO: This must list the stations. Use:fetch_live_station_list()
     else:
         cached_metar = cache.get(f"station-{station}")
-        if cached_metar:
-            metar_data = cached_metar
-        else:
+        if not cached_metar or no_cache == "1":
             metar_data = fetch_live_metar(station)
             if metar_data:
                 cache.set(
@@ -21,6 +20,8 @@ def get_metar_data(request) -> MetarJsonResponse:
                 )
             else:
                 return MetarJsonResponse(504, error="Could not fetch Live data!")
+        else:
+            metar_data = cached_metar
     return MetarJsonResponse(200, metar_data)
 
 
