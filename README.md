@@ -10,11 +10,11 @@ This is a v1 project which was developed based on an assignment. The architectur
 
 ### Whats upcoming
 
-* Advanced UI.
-* Update the API to use conventional standard REST APIs.
-* Add additional features and functionality to the API.
-* Generalised caching mechanism. 
-* Test cases
+- Advanced UI.
+- Update the API to use conventional standard REST APIs.
+- Add additional features and functionality to the API.
+- Generalised caching mechanism.
+- Test cases
 
 ## Repository
 
@@ -36,7 +36,6 @@ docker-compose up --build
 
 The API will be running at port 8000.
 
-
 ## API Reference
 
 #### Liveness API
@@ -45,18 +44,16 @@ The API will be running at port 8000.
   GET /metar/ping
 ```
 
-
 #### Get weather information for the given station code.
 
 ```http
   GET /metar/info?scode=<station_code>&no-cache=<cache_flag>
 ```
 
-| Parameter       | Type     | Description                       |
-| :-------------- | :------- | :-------------------------------- |
-| `station_code`  | `string` | **Required**. US Station code. Eg: KSGS |
-| `cache_flag`    | `integer`| Setting this query parameter to 1 will return the live data instead of the cached data |
-
+| Parameter  | Type      | Description                                                                            |
+| :--------- | :-------- | :------------------------------------------------------------------------------------- |
+| `scode`    | `string`  | **Required** **Case Sensitive** US Station code. Eg: KSGS                                             |
+| `no-cache` | `integer` | Setting this query parameter to 1 will return the live data instead of the cached data |
 
 ## Example
 
@@ -89,8 +86,7 @@ The response would be a JSON object with the following structure:
 ## Authors
 
 - [@jeessonjohney](https://github.com/jeessonjohney)
+
 ## License
 
 [GNU general public license](https://www.gnu.org/licenses/gpl-3.0.en.html)
-
-
