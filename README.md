@@ -52,7 +52,7 @@ The API will be running at port 8000.
 
 | Parameter  | Type      | Description                                                                            |
 | :--------- | :-------- | :------------------------------------------------------------------------------------- |
-| `scode`    | `string`  | **Required** **Case Sensitive** US Station code. Eg: KSGS                                             |
+| `scode`    | `string`  | **Required**, **Case Sensitive** US Station code. Eg: KSGS                                             |
 | `no-cache` | `integer` | Setting this query parameter to 1 will return the live data instead of the cached data |
 
 ## Example
@@ -70,7 +70,7 @@ The response would be a JSON object with the following structure:
   "message": "success",
   "data": {
     "last_observation": "2023/09/26 21:00GMT",
-    "station": "TKPN",
+    "station": "KSGS",
     "temperature": "23 C (73.4 F)",
     "wind": "011 at 12.6585734 mph (11 knots)"
   }
